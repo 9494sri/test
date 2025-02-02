@@ -1,8 +1,7 @@
 #!/bin/bash
 
-MOVIES=("The Shawshank Redemption" "The Godfather" "The Dark Knight" "The Godfather II" "The Lord of the Rings: The Return of the King" "Pulp Fiction" "Schindler's List" "12 Angry)
+MOVIES=("The Shawshank Redemption" "The Godfather" "The Dark Knight" "The Godfather II" "The Lord of the Rings: The Return of the King" "Pulp Fiction" "Schindler's List" "12 Angry")
 
-# index start from o and size of array is 8
 
 echo "the fist movie is ${MOVIES[0]}
 echo "the second movie is ${MOVIES[1]}

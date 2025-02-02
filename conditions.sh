@@ -10,7 +10,7 @@ NUMBER=$1
 # -le is less than or equal to
 # -ge is greater than or equal to
 
-if [ $NUMBER -gt 100] # if condition to check the given number is greater than 100
+if [ $NUMBER -gt 100 ]  # if condition to check the given number is greater than 100
 
 then  
 

@@ -1,0 +1,90 @@
+Shell Scripting 
+
+
+
+Variables 
+
+* In shell scripting all variables in capital letters only 
+
+Ex : PERSON1=Sri
+	PERSON2=Siva
+
+$PERSON1 - this is Called variable 
+
+#!/bin/bash
+
+PERSON1=sri
+PERSON2=shiva
+
+echo "$PERSON1 : Hi $PERSON2"
+echo "$PERSON2 : Hello $PERSON1"
+echo "$PERSON1 : How are you"
+echo "$PERSON2 : I am fine"
+
+We can use “${PERSON2} : Hello $PERSON1"
+
+
+
+a centralise place to mention the values, if you change at one place, it will reflect at all the places where it is referred
+
+DRY == Don't repeat yourself 
+
+Use variables 
+
+
+Run time variables - (arguments  or ors ) 
+
+arguements or args --> run time variables -> no need to edit script
+
+sh 04-variables.sh ramesh suresh
+
+
+PERSON1=$1
+PERSON2=$2
+
+
+#!/bin/bash
+
+echo "please enter your username" # this line is used to print the message
+
+read -s USERNAME   # variable name is USERNAME and -s is used to hide the input
+
+echo "usernaeme is $USERNAME"
+
+echo "please enter your password" # this line is used to print the message
+
+read -s PASSWORD  # variable name is PASSWORD and -s is used to hide the input
+
+
+
+
+Data types 
+
+Int i=0
+
+Var I=0
+
+Integer ,float ,boolean, string, array, array list, map, etc. 
+
+# Data types in shell scripting
+# =============================
+# Integer —> number 
+# Float —> decimal number 
+# Boolean —> true/false
+# String —> text
+# Array —> (devops aws docker)
+# Arraylist —> [devops aws docker]
+# Map —> name:devops duration:120hrs
+
+
+There is data types in shell scripting 
+
+addition of 2 numbers
+=====================
+user must give number1 and number2
+
+add them, print the sum
+
+how do you run a command inside shell script and get the output
+$(date)
+

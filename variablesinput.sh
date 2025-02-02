@@ -2,4 +2,6 @@
 
 echo "please enter your username"
 
-read USERNAME
+read -S USERNAME   # variable name is USERNAME
+
+echo "usernaeme is $USERNAME"

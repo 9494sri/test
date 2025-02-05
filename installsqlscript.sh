@@ -7,25 +7,41 @@ then
     echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"
     exit 1 # other than 0 s
 fi
- dnf install mysql -y 
+
+dnf list installed mysql 
 
 if [ $? -ne 0 ]
 then 
-    echo "installing mysql ... failure" 
-    exit 1
+    dnf install mysql -y 
+    if [ $? -ne 0 ]
+    then 
+        echo "installing mysql ... failure" 
+        exit 1
+    else 
+        echo "installing mysql ... success"
+    fi 
 else 
-    echo "installing mysql ... sucess"
+   echo "MySql is already ... Installed" 
+
 fi 
 
-dnf install git -y      
+dnf list installed git 
 
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then 
-    echo "installing git... failure"
-    exit 1
- else 
-    echo " installing git ... suceess"
-fi   
+
+    dnf install git -y      
+    if [ $? -ne 0]
+    then 
+        echo "installing git... failure"
+        exit 1
+    else 
+        echo " installing git ... suceess"
+    fi   
+else 
+    echo "git is already ... installed"
+fi 
+
 
 
 

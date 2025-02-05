@@ -2,13 +2,12 @@
 
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ]
-
-then
-
-echo "ERROR : You must have suod access to execute this script"
+if [$USERID -ne 0]
+then 
+    echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"
 
 fi
 
-dnf install mysql -y
+dnf install mysql -y 
+
 

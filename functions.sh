@@ -18,18 +18,18 @@
 # If the installation succeeds, it will print a success message.
 # If Git is already installed, it will print a message indicating that.
 
-USERID=$(id -u) # id -u is used to get the user id of the current user
+USERID=$(id -u)                                                             # id -u is used to get the user id of the current user
 
-validate (){  # function to validate the installation
-      if [ $1 -ne 0 ] # if condition to check the installation status
-    then                # if condition to check the installation status
-        echo "$2 ... failure"   # echo statement to print the output
-        exit 1         # exit status other than 0
-    else          # else condition to check the installation status
-        echo "$2... success" # echo statement to print the output
-    fi      # end of if condition
+validate (){                                                                # function to validate the installation
+      if [ $1 -ne 0 ]                                                       # if condition to check the installation status
+    then                                                                    # if condition to check the installation status
+        echo "$2 ... failure"                                               # echo statement to print the output
+        exit 1                                                              # exit status other than 0
+    else                                                                    # else condition to check the installation status
+        echo "$2... success"                                                # echo statement to print the output
+    fi                                                                      # end of if condition
 
-}                   # end of function
+}                                                                           # end of function
 
 if [ $USERID -ne 0 ]                                                          # if condition to check the user id
 then 

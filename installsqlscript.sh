@@ -8,6 +8,6 @@ then
 
 fi
 
-
+dnf install mysqll -y        
 
 

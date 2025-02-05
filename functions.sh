@@ -31,33 +31,33 @@ validate (){  # function to validate the installation
 
 }                   # end of function
 
-if [ $USERID -ne 0 ]    # if condition to check the user id
+if [ $USERID -ne 0 ]                                                          # if condition to check the user id
 then 
-    echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"      # echo statement to print the output
-    exit 1 # other than 0 s         # exit status other than 0
-fi          # end of if condition
+    echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"            # echo statement to print the output
+    exit 1 # other than 0 s                                                   # exit status other than 0
+fi                                                                            # end of if condition
 
-dnf list installed mysql   # dnf list installed mysql is used to check the mysql is installed or not
+dnf list installed mysql                                                      # dnf list installed mysql is used to check the mysql is installed or not
 
-if [ $? -ne 0 ]             # if condition to check the installation status
-then                       # if condition to check the installation status
-    dnf install mysql -y        # dnf install mysql -y is used to install the mysql
-    validate $? "Installing MySql"     # validate function is used to validate the installation
-else                                  # else condition to check the installation status
-   echo "MySql is already ... Installed"  # echo statement to print the output
+if [ $? -ne 0 ]                                                               # if condition to check the installation status
+then                                                                          # if condition to check the installation status
+    dnf install mysql -y                                                      # dnf install mysql -y is used to install the mysql
+    validate $? "Installing MySql"                                            # validate function is used to validate the installation
+else                                                                          # else condition to check the installation status
+   echo "MySql is already ... Installed"                                      # echo statement to print the output
 
-fi                                    # end of if condition
+fi                                                                            # end of if condition
 
-dnf list installed git      # dnf list installed git is used to check the git is installed or not
+dnf list installed git                                                        # dnf list installed git is used to check the git is installed or not
 
-if [ $? -ne 0 ]           # if condition to check the installation status
-then                        # if condition to check the installation status
+if [ $? -ne 0 ]                                                               # if condition to check the installation status
+then                                                                          # if condition to check the installation status
 
-    dnf install git -y                  # dnf install git -y is used to install the git
-    validate $? "Installing Git"        # validate function is used to validate the installation
-else                                        # else condition to check the installation status
-    echo "git is already ... installed"     # echo statement to print the output
-fi                                       # end of if condition
+    dnf install git -y                                                        # dnf install git -y is used to install the git
+    validate $? "Installing Git"                                              # validate function is used to validate the installation
+else                                                                          # else condition to check the installation status
+    echo "git is already ... installed"                                       # echo statement to print the output
+fi                                                                            # end of if condition
 
 
 

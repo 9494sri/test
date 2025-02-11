@@ -1,28 +1,17 @@
 #!/bin/bash
-
-# This script installs MySQL and Git if they are not already installed on the system.
-# It requires sudo access to execute.
-
-# Check if the script is being run with sudo privileges.
-# If not, it will print an error message and exit.
-
-# Check if MySQL is installed.
-# If not, it will attempt to install MySQL.
-# If the installation fails, it will print an error message and exit.
-# If the installation succeeds, it will print a success message.
-# If MySQL is already installed, it will print a message indicating that.
-
-# Check if Git is installed.
-# If not, it will attempt to install Git.
-# If the installation fails, it will print an error message and exit.
-# If the installation succeeds, it will print a success message.
-# If Git is already installed, it will print a message indicating that.
-
-USERID=$(id -u)                                                             # id -u is used to get the user id of the current user
+USERID=$(id -u)
 
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
+
+LOGS_FOLDER="/var/log/shellscript-logs"
+
+LOG_FILE=$(echo $0 | cut -d "." -f1)
+
+TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
+
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 validate (){                                                                # function to validate the installation
       if [ $1 -ne 0 ]                                                       # if condition to check the installation status
@@ -33,37 +22,34 @@ validate (){                                                                # fu
         echo -e "$2... $G success"                                                # echo statement to print the output
     fi                                                                      # end of if condition
 
-}                                                                           # end of function
+}               
+                                                            # end of function
 
+echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE
 if [ $USERID -ne 0 ]                                                          # if condition to check the user id
 then 
     echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"            # echo statement to print the output
     exit 1 # other than 0 s                                                   # exit status other than 0
 fi                                                                            # end of if condition
 
-dnf list installed mysql                                                      # dnf list installed mysql is used to check the mysql is installed or not
+dnf list installed mysql  &>>$LOG_FILE                                                  # dnf list installed mysql is used to check the mysql is installed or not
 
 if [ $? -ne 0 ]                                                               # if condition to check the installation status
 then                                                                          # if condition to check the installation status
-    dnf install mysql -y                                                      # dnf install mysql -y is used to install the mysql
+    dnf install mysql -y    &>>$LOG_FILE                                                     # dnf install mysql -y is used to install the mysql
     validate $? "Installing MySql"                                            # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
    echo -e "MySql is already ... $Y Installed"                                      # echo statement to print the output
 
 fi                                                                            # end of if condition
 
-dnf list installed git                                                        # dnf list installed git is used to check the git is installed or not
+dnf list installed git     &>>$LOG_FILE                                                      # dnf list installed git is used to check the git is installed or not
 
 if [ $? -ne 0 ]                                                               # if condition to check the installation status
 then                                                                          # if condition to check the installation status
 
-    dnf install git -y                                                        # dnf install git -y is used to install the git
+    dnf install git -y          &>>$LOG_FILE                                                 # dnf install git -y is used to install the git
     validate $? "Installing Git"                                              # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
     echo -e "git is already ... $Y installed"                                       # echo statement to print the output
-fi                                                                            # end of if condition
-
-
-
-
-
+fi               

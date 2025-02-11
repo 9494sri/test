@@ -4,7 +4,7 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-
+N="\e[0m"
 LOGS_FOLDER="/var/log/shellscript-logs"
 
 LOG_FILE=$(echo $0 | cut -d "." -f1)
@@ -16,10 +16,10 @@ LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 validate (){                                                                # function to validate the installation
       if [ $1 -ne 0 ]                                                       # if condition to check the installation status
     then                                                                    # if condition to check the installation status
-        echo -e "$2 ... $R failure"                                               # echo statement to print the output
+        echo -e "$2 ... $R failure $N"                                               # echo statement to print the output
         exit 1                                                              # exit status other than 0
     else                                                                    # else condition to check the installation status
-        echo -e "$2... $G success"                                                # echo statement to print the output
+        echo -e "$2... $G success $N"                                                # echo statement to print the output
     fi                                                                      # end of if condition
 
 }               
@@ -39,7 +39,7 @@ then                                                                          # 
     dnf install mysql -y    &>>$LOG_FILE_NAME                                                    # dnf install mysql -y is used to install the mysql
     validate $? "Installing MySql"                                            # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
-   echo -e "MySql is already ... $Y Installed"                                      # echo statement to print the output
+   echo -e "MySql is already ... $Y Installed $N"                                      # echo statement to print the output
 
 fi                                                                            # end of if condition
 
@@ -51,5 +51,5 @@ then                                                                          # 
     dnf install git -y          &>>$LOG_FILE_NAME                                                 # dnf install git -y is used to install the git
     validate $? "Installing Git"                                              # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
-    echo -e "git is already ... $Y installed"                                       # echo statement to print the output
+    echo -e "git is already ... $Y installed $N"                                       # echo statement to print the output
 fi               

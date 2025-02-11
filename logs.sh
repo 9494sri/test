@@ -25,30 +25,30 @@ validate (){                                                                # fu
 }               
                                                             # end of function
 
-echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE
+echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 if [ $USERID -ne 0 ]                                                          # if condition to check the user id
 then 
     echo "ERROR : YOU MUST HAVE SUDO ACCESS TO EXCUTE THIS SCRIPT"            # echo statement to print the output
     exit 1 # other than 0 s                                                   # exit status other than 0
 fi                                                                            # end of if condition
 
-dnf list installed mysql  &>>$LOG_FILE                                                  # dnf list installed mysql is used to check the mysql is installed or not
+dnf list installed mysql  &>>$LOG_FILE_NAME                                                 # dnf list installed mysql is used to check the mysql is installed or not
 
 if [ $? -ne 0 ]                                                               # if condition to check the installation status
 then                                                                          # if condition to check the installation status
-    dnf install mysql -y    &>>$LOG_FILE                                                     # dnf install mysql -y is used to install the mysql
+    dnf install mysql -y    &>>$LOG_FILE_NAME                                                    # dnf install mysql -y is used to install the mysql
     validate $? "Installing MySql"                                            # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
    echo -e "MySql is already ... $Y Installed"                                      # echo statement to print the output
 
 fi                                                                            # end of if condition
 
-dnf list installed git     &>>$LOG_FILE                                                      # dnf list installed git is used to check the git is installed or not
+dnf list installed git     &>>$LOG_FILE_NAME                                                      # dnf list installed git is used to check the git is installed or not
 
 if [ $? -ne 0 ]                                                               # if condition to check the installation status
 then                                                                          # if condition to check the installation status
 
-    dnf install git -y          &>>$LOG_FILE                                                 # dnf install git -y is used to install the git
+    dnf install git -y          &>>$LOG_FILE_NAME                                                 # dnf install git -y is used to install the git
     validate $? "Installing Git"                                              # validate function is used to validate the installation
 else                                                                          # else condition to check the installation status
     echo -e "git is already ... $Y installed"                                       # echo statement to print the output

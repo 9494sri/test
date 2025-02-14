@@ -37,7 +37,7 @@ then
 fi  
 }
 
-sudo mkdir -p /var/log/shellscript-logs
+
 
 echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 

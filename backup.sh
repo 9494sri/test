@@ -45,4 +45,16 @@ then
   USAGE
 fi
 
+if [ ! -d $SOURCE_DIR ] 
+then 
+    echo -e "$R ERROR : $N $SOURCE_DIR is not a valid directory" 
+    exit 1 
+fi
+
+if [ ! -d $DEST_DIR ] 
+then 
+    echo -e "$R ERROR : $N $DEST_DIR is not a valid directory" 
+    exit 1 
+fi
+
 echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME

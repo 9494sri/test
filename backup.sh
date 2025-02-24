@@ -66,6 +66,6 @@ then
     echo "Files to backup : $FIlES" 
 else 
     echo "No files to backup older than $DAYS days" 
-    exit 0
+
 fi
 

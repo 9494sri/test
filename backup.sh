@@ -59,13 +59,12 @@ fi
 
 echo "script started executing at : $TIMESTAMP" &>>$LOG_FILE_NAME
 
-FIlES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) # find command to find the files older than 14 days
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) # find command to find the files older than 14 days
 
 if [ -n "$FILES" ] 
 then 
-    echo "Files to backup : $FIlES" 
+    echo "Files to backup : $FILES" 
 else 
     echo "No files to backup older than $DAYS days" 
 
 fi
-

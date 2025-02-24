@@ -21,16 +21,7 @@ TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
-validate (){                                                                # function to validate the installation
-      if [ $1 -ne 0 ]                                                       # if condition to check the installation status
-    then                                                                    # if condition to check the installation status
-        echo -e "$2 ... $R failure $N"                                               # echo statement to print the output
-        exit 1                                                              # exit status other than 0
-    else                                                                    # else condition to check the installation status
-        echo -e "$2... $G success $N"                                                # echo statement to print the output
-    fi                                                                      # end of if condition
-
-}       
+     
 
 USAGE(){
 
@@ -66,7 +57,22 @@ then
     echo "Files to backup : $FILES" 
     ZIP_FILE="$DEST_DIR/applogs-$TIMESTAMP.zip"
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
-    
+    if [ -f "$ZIP_FILE" ] 
+    then 
+       echo -e "$G Successfully created zip file for files older than $DAYS days $N"
+
+       while read -r filepath
+       do
+          echo "Deleting file : $filepath" &>>$LOG_FILE_NAME
+          rm -rf $filepath
+          echo "Deleted file : $filepath"
+
+        done <<< $FILES
+
+    else 
+      echo -e "$R ERROR : $N Failed to create zip file"
+      exit 1    
+    fi
 else 
     echo "No files to backup older than $DAYS days" 
 

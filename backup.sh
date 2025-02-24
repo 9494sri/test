@@ -64,6 +64,9 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) # find command to find the
 if [ -n "$FILES" ] 
 then 
     echo "Files to backup : $FILES" 
+    ZIP_FILE="$DEST_DIR/applogs-$TIMESTAMP.zip"
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
+    
 else 
     echo "No files to backup older than $DAYS days" 
 
